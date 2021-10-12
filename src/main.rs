@@ -34,9 +34,10 @@ fn check_if_arguments_count_valid(args: &Vec<String>) -> bool {
 	return false
 }
 
-//fn get_file_metadata(file: &str) -> {
-//	let attr = fs::metadata("Cargo.toml")?;
-//	Ok(())
+//fn get_file_metadata(file: &str) {
+//    let md = metadata(".").unwrap();
+//    println!("is dir: {}", md.is_dir());
+//    println!("is file: {}", md.is_file());
 //}
 
 fn get_current_working_dir() -> String {
@@ -60,8 +61,10 @@ fn main() {
     let args: Vec<String> = collect_user_arguments();
 
     if check_if_arguments_count_valid(&args) {
-    	let arg1 = &args[1];
-    	let arg2 = &args[2];
-    	println!("{:#?}", determinate_is_it_file_or_directory(&arg1));
+    	let mut arg1 = &args[1];
+    	let mut arg2 = &args[2];
+    	//println!("{:#?}", determinate_is_it_file_or_directory(&arg1));
+    	let full_path_src = format!("{}{}", &working_dir, &arg1);
+    	println!("{:#?}",full_path_src);
     }
 }
